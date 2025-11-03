@@ -1,0 +1,56 @@
+body{
+    display:flex;
+    justify-content: center;
+    background-color: lightgray;
+
+}
+
+h1{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.mainCard{
+    display: flex;
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 5px rgba(black, green, blue, alpha);
+}
+
+.card{
+    /*background-color: aqua;*/
+    display:flex;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: center;
+    border-radius: 10px;
+    width:100%;
+    gap: 15px;
+}
+
+
+ 
+.input{
+   width:90%;
+   height:50px;
+   border-radius: 10px;
+   padding-left: 30px;
+   padding-right: 30px;
+}
+
+#check{
+    display: inline;
+    flex-direction: row;
+    margin-right: 250px;
+    margin-bottom: 8px;
+}
+
+button{
+    width:90%;
+    height:35px;
+    background-color: aqua;
+    border-radius: 10px;
+}
