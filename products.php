@@ -1,20 +1,5 @@
 <?php
 session_start();
-
-// Initialize cart if not already
-if (!isset($_SESSION['cart'])) {
-  $_SESSION['cart'] = [];
-}
-
-// Handle Add to Cart action
-if (isset($_GET['add'])) {
-  $product = $_GET['add'];
-  if (!isset($_SESSION['cart'][$product])) {
-    $_SESSION['cart'][$product] = 1;
-  } else {
-    $_SESSION['cart'][$product]++;
-  }
-}
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +20,13 @@ if (isset($_GET['add'])) {
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link active" href="products.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="cart.php">Cart 
-            <span class="badge bg-primary">
-              <?php echo array_sum($_SESSION['cart']); ?>
-            </span>
-          </a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.php">Cart 
+              <span class="badge bg-primary" id="cart-count">
+                <?php echo array_sum($_SESSION['cart'] ?? []); ?>
+              </span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -67,7 +54,7 @@ if (isset($_GET['add'])) {
               <div class="card-body text-center">
                 <h6 class="card-title">' . $p["name"] . '</h6>
                 <p class="text-muted small mb-2">₵' . $p["price"] . '.00</p>
-                <a href="?add=' . urlencode($p["name"]) . '" class="btn btn-sm btn-primary">Add to Cart</a>
+                <button class="btn btn-sm btn-primary add-to-cart" data-name="' . $p["name"] . '">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -82,6 +69,24 @@ if (isset($_GET['add'])) {
   <footer class="py-3 text-center text-muted small bg-white border-top">
     <p class="mb-0">© 2025 Essentials Supermarket</p>
   </footer>
+
+  <!-- JavaScript for AJAX Cart -->
+  <script>
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const product = button.getAttribute('data-name');
+        fetch('cart_api.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `action=add&product=${encodeURIComponent(product)}`
+        })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('cart-count').textContent = data.total;
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
