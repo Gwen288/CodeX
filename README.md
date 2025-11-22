@@ -8,3 +8,6 @@ An e-commerce app for essentials that demonstrates the basic functionalities of 
 All supporting files can be found in the `Web Documentation` folder:
 - Case Scenario
 - Storyboard
+
+##Sprint 3
+Here: https://github.com/papattrams-web/Code-X-Sprint-3
