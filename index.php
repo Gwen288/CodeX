@@ -1,3 +1,8 @@
+<?php
+header("location:registerklenam.html");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

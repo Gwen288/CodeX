@@ -24,7 +24,7 @@ if (isset($_GET['add'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Essentials - Product Catalog</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style_.css">
 </head>
 <body>
 
@@ -34,7 +34,7 @@ if (isset($_GET['add'])) {
       <a class="navbar-brand fw-bold text-primary" href="#">Essentials</a>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="products.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../html/homepage.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="cart.php">Cart 
             <span class="badge bg-primary">
               <?php echo array_sum($_SESSION['cart']); ?>
