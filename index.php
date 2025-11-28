@@ -1,29 +1,18 @@
 <?php
-header("location:registerklenam.html");
+require 'db.php';
+session_start();
+
+$login_page="../Login and Signup/login.html";
+$dashboard_page="dashboard_router.php";
+
+// Define a function to check if user is logged in
+if(isset($_SESSION['user_id'])){
+    // User is logged in, redirect to dashboard
+   header("Location: ".$dashboard_page);
+}else{
+    // User is not logged in, redirect to login page
+    header("Location: ".$login_page);
+}
+
+exit();
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Index Page</title>
-    <link rel="stylesheet" href="style.css">
-   
-</head>
-<body>
-   
-    <div class = "wrapper">
-        <h1>Welcome !!</h1>
-            
-        <form action="login.html" method="GET">    
-            <button type="submit" id="login-button">Log In</button>
-        </form>    
-
-
-
-    </div>
-
-</body>
-</html>
